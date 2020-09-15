@@ -97,7 +97,7 @@ class StockChart:
 		for i in range(self.stocks):
 			for id in self.get_ids(i + 1):
 				edge = self.get_edge(id)
-				if edge.flow:
+				if edge.flow == 1:
 					non_overlaid_charts += 1
 					break
 		print(self.stocks - non_overlaid_charts)

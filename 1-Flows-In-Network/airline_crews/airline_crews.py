@@ -50,6 +50,7 @@ class FlowGraph:
 		self.edges[id].capacity -= flow
 		self.edges[id ^ 1].capacity += flow
 
+
 	def max_flow(self, src, dst):
 		flow = 0
 		while True:
@@ -60,7 +61,6 @@ class FlowGraph:
 				self.add_flow(id, flow_to_add)
 			flow += flow_to_add
 		return flow
-
 
 	def bfs(self, src, dst):
 		flow = float('inf')
@@ -97,7 +97,7 @@ class FlowGraph:
 			job = -1
 			for id in self.get_ids(i+1):
 				edge = self.get_edge(id)
-				if edge.flow:
+				if edge.flow == 1:
 					job = edge.v - self.flights
 					break
 			jobs.append(job)
@@ -108,19 +108,23 @@ def read_data():
 	flights, crew = map(int, input().split())
 	flow_graph = FlowGraph(flights+crew+2, flights)
 
-	# add source node
-	for i in range(flights):
-		flow_graph.add_edge(0, i+1, 1)
-	# add destination node
-	for i in range(crew):
-		flow_graph.add_edge(i+flights+1, flights+crew+1, 1)
 
 	# edges on the left bipartite graph to right
-	for flight in range(flights):
-		people = list(map(bool, input().split()))
+	for flight in range(1, flights+1):
+		# source node to flights
+		flow_graph.add_edge(0, flight, 1)
+
+		people = list(map(int, input().split()))
 		for num, bit in enumerate(people):
 			if bit:
-				flow_graph.add_edge(flight+1, flights+num+1, 1)
+				flow_graph.add_edge(flight, flights+num+1, 1)
+
+	# add sink node
+	last = flow_graph.size() -1
+	for i in range(flights+1, flights+crew+1):
+		flow_graph.add_edge(i, last, 1)
+
+
 	return flow_graph
 
 
