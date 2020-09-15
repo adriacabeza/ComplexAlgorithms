@@ -1,4 +1,4 @@
-# Complex Algorithms  Coursera
+# Advanced Algorithms and Complexity Course by University of San Diego
 
 - [Flows in Networks](./1-Flows-In-Network): 
     - **Evacuation**: Applying an algorithm for finding maximum flow in a network to determine how fast people can be evacuated from the given city.
