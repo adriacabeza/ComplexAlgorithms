@@ -1,0 +1,17 @@
+def read_data():
+	n, m = map(int, input().split())
+	a = []
+	for _ in range(n):
+		a.append(list(map(int, input().split())))
+	b = list(map(int, input().split()))
+	pleasure = list(map(int, input().split()))
+	for i in range(m):
+		lst = [0] * m
+		lst[i] = -1
+		a.append(lst)
+		b.append(0)
+	a.append([1] * m)
+	b.append(1000000001)
+	subsets = combinations(n, m)
+	equation = Equation(a, b)
+	return equation, pleasure, subsets, m

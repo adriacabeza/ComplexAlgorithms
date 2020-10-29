@@ -1,7 +1,6 @@
 # python3
 import queue
 
-
 class Edge:
 
 	def __init__(self, u, v, capacity):

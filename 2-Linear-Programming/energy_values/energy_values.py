@@ -1,7 +1,4 @@
 # python3
-EPS = 1e-6
-PRECISION = 20
-
 
 class Equation:
 	def __init__(self, a, b):
@@ -15,7 +12,7 @@ class Position:
 		self.row = row
 
 
-def SelectPivotElement(pivot, a, used_rows):
+def select_pivot(pivot, a, used_rows):
 	while used_rows[pivot.row] or a[pivot.row][pivot.column] == 0:
 		pivot.row += 1
 	if pivot.row == len(a):
@@ -23,7 +20,7 @@ def SelectPivotElement(pivot, a, used_rows):
 	return pivot
 
 
-def SwapLines(a, b, used_rows, pivot_element):
+def swap_lines(a, b, used_rows, pivot_element):
 	a[pivot_element.column], a[pivot_element.row] = a[pivot_element.row], a[pivot_element.column]
 	b[pivot_element.column], b[pivot_element.row] = b[pivot_element.row], b[pivot_element.column]
 	used_rows[pivot_element.column], used_rows[pivot_element.row] = used_rows[pivot_element.row], used_rows[
@@ -31,7 +28,7 @@ def SwapLines(a, b, used_rows, pivot_element):
 	pivot_element.row = pivot_element.column
 
 
-def ProcessPivotElement(a, b, pivot, used_rows):
+def process_pivot(a, b, pivot, used_rows):
 	scale = a[pivot.row][pivot.column]
 	if scale != 1:
 		for i in range(len(a)):
@@ -46,29 +43,29 @@ def ProcessPivotElement(a, b, pivot, used_rows):
 	used_rows[pivot.row] = True
 
 
-def SolveEquation(equation):
+def solve_equation(equation):
 	a = equation.a
 	b = equation.b
 	size = len(a)
 	used_rows = [False] * size
 	for i in range(size):
 		pivot_element = Position(0, i)
-		pivot_element = SelectPivotElement(pivot_element, a, used_rows)
+		pivot_element = select_pivot(pivot_element, a, used_rows)
 		if not pivot_element:
 			return None
 		#print(pivot_element.row, pivot_element.column)
-		SwapLines(a, b, used_rows, pivot_element)
-		ProcessPivotElement(a, b, pivot_element, used_rows)
+		swap_lines(a, b, used_rows, pivot_element)
+		process_pivot(a, b, pivot_element, used_rows)
 		#print('a:{}'.format(a), 'b:{}'.format(b))
 	return b
 
 
-def PrintColumn(column):
+def print_column(column):
 	for value in column:
 		print("%.20lf" % value)
 
 
-def ReadData():
+def read_data():
 	n = int(input())
 	a = list()
 	b = list()
@@ -80,7 +77,7 @@ def ReadData():
 
 
 if __name__ == '__main__':
-	matrix = ReadData()
-	solution = SolveEquation(matrix)
-	PrintColumn(solution)
+	matrix = read_data()
+	solution = solve_equation(matrix)
+	print_column(solution)
 	exit(0)
