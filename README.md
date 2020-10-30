@@ -17,3 +17,6 @@ This repository contains some of the problem assignments from the Advanced Algor
     - **School Bus**:
 
 
+Certificate:
+
+<img src="./certificate.png" width="80%"/>
