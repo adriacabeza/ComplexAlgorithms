@@ -8,7 +8,7 @@ This repository contains some of the problem assignments from the Advanced Algor
 - [Linear Programming](./2-Linear-Programming):
     - **Energy values**: Applying Gaussian elimination to solve a problem where we have to tell the amount of nutrients that each ingredient has.
     - **Diet**: Applying Gaussian elimination to perform a brute force linear programming approach
-- [NP-Completeness](./3-NP-Completeness):
+- [NP-Completeness](./3-NP-completeness):
     - **GSM Network**: encoding to SAT the 3-coloring problem to determine if we can make a GSM network work
     - **Cleaning the apartment**: encoding to SAT the Hamiltonian Path problem to find a a clever way to clean your apartment
 - [Coping with NP-completeness](./4-Coping-with-NP-completeness):
