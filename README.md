@@ -14,8 +14,8 @@ This repository contains some of the problem assignments from the Advanced Algor
 - [Coping with NP-completeness](./4-Coping-with-NP-completeness):
     - **Integrated Circuit Design**: solving 2-SAT by constructing a directed implications graph and looking for different strongly connected components to design part of an integrated circuit
     - **Plan a Fun Party**: computing maximum independent set of a tree to plan a fun party
-    - **School Bus**:
-
+- [Streaming Algorithms](./5-Streaming-Algorithms):
+    - **Nice vs Naughty**: implementing the count sketch algorithm to determine if a kid was nice or naughty to help Santa Claus.
 
 Certificate:
 
